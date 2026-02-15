@@ -16,8 +16,9 @@ import (
 )
 
 func main() {
-	err := env.Load()
-	if err != nil {
+	var err error
+
+	if err = env.Load(); err != nil {
 		log.Fatalln(err)
 	}
 
