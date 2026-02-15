@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"gbfw/api/bootstrap"
 	"gbfw/api/controllers"
 	"gbfw/api/env"
 	"gbfw/api/vite"
@@ -16,9 +17,11 @@ import (
 )
 
 func main() {
-	var err error
+	err := bootstrap.Run(
+		env.Load,
+	)
 
-	if err = env.Load(); err != nil {
+	if err != nil {
 		log.Fatalln(err)
 	}
 
@@ -49,7 +52,12 @@ func main() {
 
 	<-ctx.Done()
 
-	if err = app.ShutdownWithContext(ctx); err != nil {
+	err = bootstrap.Run(
+		app.Shutdown,
+		func() (err error) { return app.ShutdownWithContext(ctx) },
+	)
+
+	if err != nil {
 		log.Fatalln(err)
 	}
 }
