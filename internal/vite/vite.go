@@ -7,7 +7,7 @@ import (
 	"os"
 	"os/exec"
 
-	"gbfw/api/env"
+	"gbfw/internal/env"
 )
 
 //go:embed build/*

@@ -2,14 +2,15 @@ package main
 
 import (
 	"context"
-	"gbfw/api/bootstrap"
-	"gbfw/api/controllers"
-	"gbfw/api/env"
-	"gbfw/api/vite"
 	"io/fs"
 	"log"
 	"os"
 	"os/signal"
+
+	"gbfw/internal/bootstrap"
+	"gbfw/internal/controllers"
+	"gbfw/internal/env"
+	"gbfw/internal/vite"
 
 	"github.com/gofiber/fiber/v3"
 	"github.com/gofiber/fiber/v3/middleware/logger"
