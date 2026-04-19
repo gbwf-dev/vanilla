@@ -6,9 +6,9 @@ import (
 	"os/signal"
 	"syscall"
 
-	"gbfw/internal/http/routes"
-	"gbfw/internal/services/env"
-	"gbfw/internal/services/vite"
+	"gravel/internal/http/routes"
+	"gravel/internal/services/env"
+	"gravel/internal/services/vite"
 
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v3"
