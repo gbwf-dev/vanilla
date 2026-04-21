@@ -22,14 +22,14 @@ type Service struct{}
 
 func (s *Service) Start(context.Context) (err error) {
 	FS, err = fs.Sub(productionFS, "build")
-	if env.IsDev() {
-		cmd := exec.Command(string(env.Get("JS_RUNTIME", "node")), "node_modules/vite/bin/vite", "--host")
-		cmd.Stdout = os.Stdout
-		cmd.Stderr = os.Stderr
-		err = cmd.Start()
-		FS = &fss{[]fs.FS{os.DirFS("internal/services/vite/dev"), os.DirFS("public")}}
+	if !env.IsDev() {
+		return err
 	}
-	return err
+
+	FS = &fss{[]fs.FS{os.DirFS("internal/services/vite/dev"), os.DirFS("public")}}
+	cmd := exec.Command(env.Get("JS_RUNTIME", "node"), "node_modules/vite/bin/vite", "--host")
+	cmd.Stdout, cmd.Stderr = os.Stdout, os.Stderr
+	return cmd.Start()
 }
 
 func (s *Service) String() string                        { return ServiceName }
