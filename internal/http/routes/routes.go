@@ -2,7 +2,7 @@ package routes
 
 import (
 	"gravel/internal/http/handlers"
-	"gravel/internal/services/vite"
+	"gravel/internal/vite"
 
 	"github.com/gofiber/fiber/v3"
 	"github.com/gofiber/fiber/v3/middleware/static"

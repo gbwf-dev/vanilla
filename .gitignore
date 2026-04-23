@@ -11,8 +11,6 @@ node_modules
 dist
 dist-ssr
 *.local
-api/vite/build/*
-!api/vite/build/.gitkeep
 
 # Editor directories and files
 .vscode/*
@@ -26,7 +24,5 @@ api/vite/build/*
 *.sw?
 
 air
-
 .env*
 !.env.example
-internal/vite/build/*

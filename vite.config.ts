@@ -5,7 +5,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, import.meta.dirname);
   const port = 5173;
   return {
-    build: { outDir: "internal/services/vite/build" },
+    build: { outDir: "internal/vite/build" },
     clearScreen: false,
     resolve: {
       alias: {
